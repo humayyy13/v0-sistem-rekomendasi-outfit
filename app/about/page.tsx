@@ -34,7 +34,7 @@ export default function AboutPage() {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Tentang NyariOutfit</h1>
           <p className="text-xl text-muted-foreground text-pretty">
-            Sistem Pendukung Keputusan Rekomendasi Outfit Syar'i Menggunakan Metode SAW
+           Rekomendasi Outfit Syar'i
           </p>
         </div>
 
@@ -70,8 +70,7 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Pilih beberapa outfit dari koleksi toko syar'i terpercaya seperti Hijab Alila, Kazami Store, dan
-                  Pelangi Hijab untuk dibandingkan.
+                  Pilih beberapa outfit dari koleksi toko syar'i terpercaya seperti Kazami Store untuk dibandingkan.
                 </p>
               </CardContent>
             </Card>
