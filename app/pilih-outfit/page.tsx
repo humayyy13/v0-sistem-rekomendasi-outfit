@@ -34,7 +34,7 @@ const outfits = [
     name: "Abaya Kalila",
     store: "Kazami Store",
     image: "/abaya-kalila.jpg",
-    colors: ["Dark Brown", "Taupe", "Cream", "Hitam", "Army", "olive"],
+    colors: ["Dark Brown", "Taupe", "Cream", "Hitam", "Army", "Olive"],
     materials: ["Crepe"],
     occasions: ["Formal", "Kerja"],
     description: "Abaya Kalila Set inner + outer dengan lapel berpayet yang mewah.",
@@ -44,7 +44,7 @@ const outfits = [
     name: "Abaya Haneen",
     store: "Kazami Store",
     image: "/abaya-haneen.jpg",
-    colors: ["Cream", "Soft Pink", "Brown", "Hitam", "Olive",
+    colors: ["Cream", "Soft Pink", "Brown", "Hitam", "Olive"], // ✅ Kurung siku ditutup
     materials: ["Chiffon", "Crepe"],
     occasions: ["Pesta", "Formal", "Pengajian"],
     description: "Abaya Haneen dengan cape lembut yang feminin.",
@@ -94,7 +94,7 @@ const outfits = [
     name: "Abaya Camellia",
     store: "Kazami Store",
     image: "/abaya-camellia.jpg",
-    colors: ["Black", "Mint", "Putih", "Ungu", "Pink", "Merah", "Brown" ],
+    colors: ["Black", "Mint", "Putih", "Ungu", "Pink", "Merah", "Brown"],
     materials: ["Crepe"],
     occasions: ["Pesta", "Formal"],
     description: "Abaya Camellia dengan piping hitam & bunga 3D.",
@@ -131,10 +131,10 @@ const outfits = [
   },
   {
     id: 13,
-    name: "Abaya luna",
+    name: "Abaya Luna",
     store: "Kazami Store",
     image: "/luna-abaya.jpg",
-    colors: ["Hitam", "Brown", "MAroon", "Mauve", "Cream", "Hijau"],
+    colors: ["Hitam", "Brown", "Maroon", "Mauve", "Cream", "Hijau"],
     materials: ["Chiffon"],
     occasions: ["Formal", "Pesta"],
     description: "Abaya Luna dengan dekor kristal setengah lingkar yang mewah.",
@@ -184,7 +184,7 @@ const outfits = [
     name: "Luxe Harmony",
     store: "Kazami Store",
     image: "/luxe-harmony.jpg",
-    colors: ["Vanilla", " Hitam", "Soft Pink", "Coklat", "Grey"],
+    colors: ["Vanilla", "Hitam", "Soft Pink", "Coklat", "Grey"],
     materials: ["Crepe", "Lace"],
     occasions: ["Pesta", "Formal"],
     description: "Luxe Harmony Koleksi terracotta bertekstur dengan detail ruffle/lace.",
@@ -197,10 +197,17 @@ export default function PilihOutfitPage() {
 
   const stores = ["all", "Kazami Store"]
 
-  const filteredOutfits = filterStore === "all" ? outfits : outfits.filter((outfit) => outfit.store === filterStore)
+  const filteredOutfits =
+    filterStore === "all"
+      ? outfits
+      : outfits.filter((outfit) => outfit.store === filterStore)
 
   const handleOutfitSelect = (outfitId: number) => {
-    setSelectedOutfits((prev) => (prev.includes(outfitId) ? prev.filter((id) => id !== outfitId) : [...prev, outfitId]))
+    setSelectedOutfits((prev) =>
+      prev.includes(outfitId)
+        ? prev.filter((id) => id !== outfitId)
+        : [...prev, outfitId]
+    )
   }
 
   return (
@@ -231,8 +238,8 @@ export default function PilihOutfitPage() {
         </div>
       </nav>
 
+      {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">Pilih Outfit untuk Dibandingkan</h1>
           <p className="text-muted-foreground text-lg">
@@ -241,7 +248,7 @@ export default function PilihOutfitPage() {
           </p>
         </div>
 
-        {/* Store Filter */}
+        {/* Filter */}
         <div className="mb-8">
           <h3 className="text-lg font-semibold mb-4">Filter berdasarkan Toko</h3>
           <div className="flex flex-wrap gap-2">
@@ -258,7 +265,7 @@ export default function PilihOutfitPage() {
           </div>
         </div>
 
-        {/* Outfit Grid */}
+        {/* Grid Outfit */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredOutfits.map((outfit) => (
             <Card key={outfit.id} className="group hover:shadow-lg transition-shadow">
