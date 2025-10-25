@@ -18,9 +18,11 @@ export default function HomePage() {
               <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors">
                 Tentang
               </Link>
-              <Button variant="outline" size="sm">
-                Masuk
-              </Button>
+              <Link href="/login">
+                <Button variant="outline" size="sm">
+                  Masuk
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -52,9 +54,6 @@ export default function HomePage() {
                 Mulai Pilih Outfit
               </Button>
             </Link>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-transparent">
-              Lihat Demo
-            </Button>
           </div>
         </div>
       </section>

@@ -9,8 +9,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Sparkles, Loader } from "lucide-react"
 
-export default function AdminLoginPage() {
+export default function LoginPage() {
   const router = useRouter()
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
@@ -24,11 +26,11 @@ export default function AdminLoginPage() {
       const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({ name, email, password }),
       })
 
       if (response.ok) {
-        router.push("/admin")
+        router.push("/pilih-tema")
       } else {
         const data = await response.json()
         setError(data.error || "Login gagal")
@@ -48,19 +50,40 @@ export default function AdminLoginPage() {
             <Sparkles className="h-6 w-6 text-primary" />
             <span className="text-xl font-bold">NyariOutfit</span>
           </div>
-          <CardTitle>Admin Login</CardTitle>
+          <CardTitle>User Login</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2">Password Admin</label>
+              <label className="block text-sm font-medium mb-2">Nama</label>
+              <Input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Masukkan nama Anda"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">Email</label>
+              <Input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Masukkan email Anda"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">Password</label>
               <Input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Masukkan password admin"
+                placeholder="Masukkan password"
                 required
-                disabled={loading}
               />
             </div>
 
@@ -76,10 +99,6 @@ export default function AdminLoginPage() {
                 "Login"
               )}
             </Button>
-
-            <p className="text-xs text-muted-foreground text-center">
-              Demo password: <code className="bg-muted px-2 py-1 rounded">admin123</code>
-            </p>
           </form>
         </CardContent>
       </Card>
